@@ -5,6 +5,7 @@
     <recommend-view :recommends="recommends"/>
     <feature-view/>
     <tab-control class="tab-control" :titles="['流行', '新款', '精选']"/>
+    <goods-list :goods="goods['pop'].list"/>
 
     <ul>
       <li>列表1</li>
@@ -118,6 +119,7 @@
 
   import NavBar from 'components/common/navbar/NavBar';
   import TabControl from 'components/content/tabControl/TabControl'
+  import GoodsList from 'components/content/goods/GoodsList'
 
   import { getHomeMultidata, getHomeGoods } from "network/home";
 
@@ -128,7 +130,8 @@
       RecommendView,
       FeatureView,
       NavBar,
-      TabControl
+      TabControl,
+      GoodsList
     },
     data() {
       return {
@@ -146,11 +149,13 @@
       this.getHomeMultidata()
 
       // 2. 请求商品数据
-      this.getHomeGoods('pop')
-      this.getHomeGoods('new')
+      this.getHomeGoods("pop")
+      this.getHomeGoods("new")
       this.getHomeGoods('sell')
     },
     methods: {
+      /*网络请求*/
+      //请求多个数据
       getHomeMultidata() {
         getHomeMultidata().then(res => {
           // this.result = res;
@@ -159,6 +164,7 @@
           this.recommends = res.data.recommend.list;
         })
       },
+      //请求商品数据
       getHomeGoods(type) {
         const page = this.goods[type].page + 1
         getHomeGoods(type, page).then(res => {
@@ -189,5 +195,6 @@
   .tab-control {
     position: sticky;
     top: 44px;
+    z-index: 9;
   }
 </style>

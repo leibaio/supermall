@@ -26,3 +26,18 @@ export function getHomeGoods(type, page) {
 //
 // test()
 
+// 保存商品数据分析
+let totalNums = []
+
+const num1 = [20, 11, 222]
+const num2 = [111, 22, 333]
+
+//totalNum不能直接赋值，否则数据就只有一个
+
+//方法1： 循环push
+// for (let n of num1) {
+//   totalNums.push(n)
+// }
+
+//方法2: es6拓展（展开）运算符...  讲一个数组转为用逗号分隔的参数序列。
+totalNums.push(...num1)
