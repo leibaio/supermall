@@ -27,6 +27,8 @@ export default {
   methods: {
     itemClick(index) {
       this.currentIndex = index;
+      // 将index传给外面的home
+      this.$emit('tabClick', index)
     }
   }
 }
