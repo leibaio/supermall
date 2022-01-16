@@ -1,14 +1,19 @@
 <template>
   <div id="home">
     <nav-bar class="home-nav"><div slot="center">购物街</div></nav-bar>
-    <home-swiper :banners="banners"/>
-    <recommend-view :recommends="recommends"/>
-    <feature-view/>
-    <tab-control class="tab-control" 
-                 :titles="['流行', '新款', '精选']" 
-                 @tabClick="tabClick"/>
-    <!-- <goods-list :goods="goods['pop'].list"/> -->
-    <goods-list :goods="showGoods"/>
+
+    <div class="wrapper">
+      <div class="content">
+        <home-swiper :banners="banners"/>
+        <recommend-view :recommends="recommends"/>
+        <feature-view/>
+        <tab-control class="tab-control" 
+                    :titles="['流行', '新款', '精选']" 
+                    @tabClick="tabClick"/>
+        <!-- <goods-list :goods="goods['pop'].list"/> -->
+        <goods-list :goods="showGoods"/>
+      </div>
+    </div>
 
     <ul>
       <li>列表1</li>
@@ -124,7 +129,8 @@
   import TabControl from 'components/content/tabControl/TabControl'
   import GoodsList from 'components/content/goods/GoodsList'
 
-  import { getHomeMultidata, getHomeGoods } from "network/home";
+  import { getHomeMultidata, getHomeGoods } from "network/home"
+
 
   export default {
     name: "Home",
