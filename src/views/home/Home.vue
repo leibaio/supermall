@@ -54,7 +54,7 @@
         recommends: [],
         goods: {
           'pop': {page: 0, list: []},
-          'news': {page: 0, list: []},
+          'new': {page: 0, list: []},
           'sell': {page: 0, list: []}
         },
         currentType: 'pop',
@@ -71,8 +71,8 @@
       this.getHomeMultidata()
 
       // 2. 请求商品数据
-      this.getHomeGoods("pop")
-      this.getHomeGoods("new")
+      this.getHomeGoods('pop')
+      this.getHomeGoods('new')
       this.getHomeGoods('sell')
     },
     mounted() {
@@ -84,13 +84,13 @@
         switch(index) {
           case 0:
             this.currentType = 'pop'
-            break;
+            break
           case 1:
             this.currentType = 'new'
-            break;
+            break
           case 2: 
             this.currentType = 'sell'
-            break;
+            break
         }
       },
       backClick() {
@@ -102,7 +102,7 @@
       loadMore() {
         this.getHomeGoods(this.currentType)
 
-        
+
       },
       /*网络请求相关方法*/
       //请求多个数据
